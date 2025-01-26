@@ -7,7 +7,7 @@ import (
 
 func postFileHandler(context *gin.Context) {
     file, _ := context.FormFile("file")
-    var dst string
+    dst := "tmp/" + file.Filename
     context.SaveUploadedFile(file, dst)
     context.JSON(
         http.StatusOK,
